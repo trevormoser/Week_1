@@ -1,0 +1,72 @@
+cumProgramming Assignment #1
+
+PART 1:
+
+Random Code:
+
+x <- 1:322 ## Makes a vector of numerics
+
+y <- as.character(x) ## Converts numeric vector to characters
+
+names <- c(c((paste(zero, (paste(zero, y[1:9], sep="")), sep="")), (paste(zero, y[10:99], sep=""))), 100:322) ## Adds "zeros" before non-three digit numbers and assigns as the name of each file (001-322)
+
+folder <- "sepdata" ## Name of folder
+
+extention <- "csv" ## Name of file extension
+
+location <- paste(folder, names, sep="/") ##Combines folder and name of file
+
+directory <- paste(location, extention, sep=".") ##Combines location with file extention, giving the "folder/names.csv"
+
+filename$nitrate[!is.na(test$nitrate)]
+
+number_fix <- function(ID) {
+	   for(i in ID){
+	   if(i >= 1 && i <= 9){
+	   	i <- paste(0, paste(0, i, sep=""), sep="")
+	   } else if(i >=10 && i <=99){
+	     	  i <- paste(0, i, sep="")
+	   } else {
+	     	  i <- as.character(i)
+	   }
+	   print(i)
+	   }
+}
+
+naming <- function(folder, ID){
+       f <- deparse(substitute(folder))
+       for(i in ID){
+       	     location <- paste(f, i, sep="/")
+	     final <- paste(location, "csv", sep=".")
+       }
+       print(final)
+}
+
+Solution:
+
+pollutantmean <- function(directory, pollutant, ID) {
+	folder <- deparse(substitute(directory))
+	pollutant_name <- deparse(substitute(pollutant))
+	for(i in ID){
+	   if(i >= 1 && i <= 9){
+	   	i <- paste(0, paste(0, i, sep=""), sep="")
+	   } else if(i >=10 && i <=99){
+	     	  i <- (paste(0, i, sep=""))
+	   } else {
+	     	  i <- as.character(i)
+	   }
+	   name <- i
+	   }
+	for(i in name){
+       	   location <- paste(folder, i, sep="/")
+	   full <- paste(location, "csv", sep=".")
+	   }
+	table <- read.csv(full)
+	table_column <- table[[pollutant_name]][!is.na(table[[pollutant_name]])]
+	mean(table_column)
+}
+
+Part 2:
+
+
+

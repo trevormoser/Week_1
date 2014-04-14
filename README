@@ -31,6 +31,17 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
 }
 You can see some example output from this function. The function that you write should be able to match this output. Please save your code to a file named pollutantmean.R.
 
+>x <- 1:322 ## Makes a vector of numerics
+>y <- as.character(x) ## Converts numeric vector to characters
+>names <- c(c((paste(zero, (paste(zero, y[1:9], sep="")), sep="")), (paste(zero, y[10:99], sep=""))), 100:322) ## Adds "zeros" before non-three digit numbers and assigns as the name of each file (001-322)
+>folder <- "sepdata" ## Name of folder
+>extention <- "csv" ## Name of file extension
+>location <- paste(folder, names, sep="/") ##Combines folder and name of file
+>directory <- paste(location, extention, sep=".") ##Combines location with file extention, giving the "folder/names.csv"
+
+>filename$nitrate[!is.na(test$nitrate)]
+
+
 Part 2
 
 Write a function that reads a directory full of files and reports the number of completely observed cases in each data file. The function should return a data frame where the first column is the name of the file and the second column is the number of complete cases. A prototype of this function follows
