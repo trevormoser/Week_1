@@ -1,4 +1,4 @@
-cumProgramming Assignment #1
+ ccumProgramming Assignment #1
 
 PART 1:
 
@@ -38,35 +38,46 @@ naming <- function(folder, ID){
        for(i in ID){
        	     location <- paste(f, i, sep="/")
 	     final <- paste(location, "csv", sep=".")
-       }
        print(final)
+       }
 }
 
 Solution:
 
 pollutantmean <- function(directory, pollutant, ID) {
-	folder <- deparse(substitute(directory))
-	pollutant_name <- deparse(substitute(pollutant))
-	for(i in ID){
-	   if(i >= 1 && i <= 9){
-	   	i <- paste(0, paste(0, i, sep=""), sep="")
-	   } else if(i >=10 && i <=99){
-	     	  i <- (paste(0, i, sep=""))
-	   } else {
-	     	  i <- as.character(i)
-	   }
-	   name <- i
-	   }
-	for(i in name){
-       	   location <- paste(folder, i, sep="/")
-	   full <- paste(location, "csv", sep=".")
-	   }
-	table <- read.csv(full)
-	table_column <- table[[pollutant_name]][!is.na(table[[pollutant_name]])]
-	mean(table_column)
+	      folder <- deparse(substitute(directory))
+	      pollutant_name <- deparse(substitute(pollutant))
+	      results <- c()
+	      for(i in ID){
+	      	    if(i >= 1 && i <= 9){
+		    	 i <- paste(0, paste(0, i, sep=""), sep="")
+			} else if(i >=10 && i <=99){
+			 i <- (paste(0, i, sep=""))
+			} else if(i <= 322){
+			 i <- as.character(i)
+			} else {
+			return("Not a valid ID number")
+			}
+		for(j in i){
+		      location <- paste(folder, j, sep="/")
+		      full <- paste(location, "csv", sep=".")
+		      table <- read.csv(full, header=TRUE)
+		      if(pollutant_name == "nitrate") {
+		      		column<- na.omit(table[[pollutant_name]])
+				results <- append(results, column)
+		      } else if(pollutant_name =="sulfate"){
+		      		column<- na.omit(table[[pollutant_name]])
+				results <- append(results, column)
+		      } else {
+		      return("Not a valid pollutant")
+		      }
+		 }		 
+	}
+	print(mean(results))
 }
 
 Part 2:
 
+Solution:
 
 
