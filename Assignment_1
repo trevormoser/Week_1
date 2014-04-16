@@ -1,4 +1,4 @@
- ccumProgramming Assignment #1
+Programming Assignment #1
 
 PART 1:
 
@@ -80,4 +80,28 @@ Part 2:
 
 Solution:
 
-
+complete <- function(directory, ID){
+	 folder <- deparse(substitute(directory))
+	 v1 <- c()
+	 v2 <- c()
+	 for(i in ID){
+	       v2 <- append(v2, i)
+	       if(i >=1 && i <=9){
+	       i <- paste(0, (paste(0, i, sep="")), sep="")
+	       } else if(i >=10 && i <= 99){
+	       i <- paste(0, i, sep="")
+	       } else if(i >=100 && i <= 322){
+	       i <- as.character(i)
+	       }
+	       for(j in i){
+	       	     location <- paste(folder, j, sep="/")
+	       	     full <- paste(location, "csv", sep=".")
+	       	     table <- read.csv(full, header=TRUE)
+		     nas <- nrow(na.omit(table))
+		     v1 <- append(v1, nas)
+	       }
+	 }
+	 grid <- data.frame(cbind(v2, v1))
+	 names(grid) <- c("id", "nobs")
+	 print(grid)
+}
